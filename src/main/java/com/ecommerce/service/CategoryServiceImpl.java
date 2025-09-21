@@ -1,15 +1,15 @@
 package com.ecommerce.service;
 
+import com.ecommerce.exception.ResourceNotFoundException;
 import com.ecommerce.model.Category;
 import com.ecommerce.repository.CategoryRepository;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class CategoryServiceImpl implements CategoryService{
@@ -27,10 +27,11 @@ public class CategoryServiceImpl implements CategoryService{
         categoryRepository.save(category);
     }
 
+    @SneakyThrows
     @Override
     public String deleteByCategoryId(Long categoryId) {
         Category savedCategory = categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Resource NOt Found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Category" , "CategoryId", categoryId));
         categoryRepository.delete(savedCategory);
         return categoryId + "  Category Id Deleted";
     }
