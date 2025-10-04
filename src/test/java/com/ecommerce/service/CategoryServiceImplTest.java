@@ -9,6 +9,7 @@ import com.ecommerce.payload.CategoryDTO;
 import com.ecommerce.payload.CategoryResponse;
 import com.ecommerce.repository.CategoryRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
@@ -45,6 +46,7 @@ public class CategoryServiceImplTest {
         categoryDTO.setCategoryName("Books");
     }
 
+    @DisplayName(value = "Get All Categories Success Test")
     @Test
     public void testGetAllCategories_Success() {
         List<Category> categoryList = List.of(category);
