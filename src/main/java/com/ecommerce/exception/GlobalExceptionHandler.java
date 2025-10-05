@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Global Exception Handler
+ * Global Exception Handler Class
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
